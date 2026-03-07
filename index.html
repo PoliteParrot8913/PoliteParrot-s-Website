@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PoliteParrot's Website</title>
+
+  <link id="favicon" rel="icon" href="https://media.tenor.com/wigRTU5BpY0AAAAj/madness-combat.gif" type="image/gif" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+    }
+
+    .splash-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://tse2.mm.bing.net/th/id/OIP.uukE1Cw2IcadS6maAvy30QHaNK?w=1440&h=2560&rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .splash-title {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff00ff;
+      text-shadow: 0 0 10px white, 0 0 20px #ff00ff;
+    }
+
+    .enter-btn {
+      background: url('https://media.tenor.com/z4n7mGM0VC4AAAAi/agencylife-agenturleben.gif') no-repeat center;
+      background-size: contain;
+      border: none;
+      width: 250px;
+      height: 150px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .main-content {
+      display: none;
+      text-align: center;
+      padding: 50px;
+      background-color: #111;
+      min-height: 100vh;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .bio-box, .extra-box {
+      flex: 1 1 300px;
+      padding: 30px;
+      border-radius: 15px;
+      min-height: 250px;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .bio-box { background-color: #d62828; }
+    .extra-box { background-color: #003049; }
+
+    .music-sidebar {
+      background: linear-gradient(to bottom, red, purple, blue);
+      padding: 20px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 50px;
+    }
+
+    .music-sidebar h3 {
+      margin-bottom: 15px;
+    }
+
+    .music-sidebar iframe {
+      display: block;
+      margin: 10px auto;
+      border-radius: 10px;
+    }
+
+    /* === Assembly Line (Left to Right) === */
+    .gif-assembly-line {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      border-top: 3px solid #ff00ff;
+      border-bottom: 3px solid #00ffff;
+      margin-top: 50px;
+      white-space: nowrap;
+    }
+
+    .gif-track {
+      display: inline-flex;
+      animation: scrollRight 80s linear infinite;
+    }
+
+    .gif-assembly-line:hover .gif-track {
+      animation-play-state: paused;
+    }
+
+    .gif-track img {
+      height: 80px;
+      margin: 0 20px;
+      border-radius: 10px;
+    }
+
+    @keyframes scrollRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* === Stamp Line (Right to Left) === */
+    .gif-stamps-line {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 10px 0;
+      border-top: 3px solid #00ffff;
+      border-bottom: 3px solid #ff00ff;
+      margin-top: 20px;
+      white-space: nowrap;
+    }
+
+    .gif-stamps-track {
+      display: inline-flex;
+      animation: scrollLeft 90s linear infinite;
+    }
+
+    .gif-stamps-line:hover .gif-stamps-track {
+      animation-play-state: paused;
+    }
+
+    .gif-stamps-track img {
+      height: 60px;
+      margin: 0 15px;
+      border-radius: 8px;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(34, 34, 34, 0.9);
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .footer p {
+      font-family: 'Press Start 2P';
+      font-size: 1rem;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ff00; }
+      100% { text-shadow: 0 0 15px #ff00ff; }
+    }
+  </style>
+</head>
+<body>
+
+
+	   
+  <!-- Splash -->
+  <div class="splash-page" id="splash-page">  
+  <img src="file:///C:/Users/kimyh/Downloads/1000042018.gif" 
+       alt="OC GIF">
+    <h1 class="splash-title">Welcome to My Website!</h1>
+    <button class="enter-btn" onclick="enterSite()"></button>
+  </div>
+  
+<!-- CSS -->
+<style>
+  #music-player {
+    position: fixed;      /* Stays in place while scrolling */
+    left: 0;              /* Stick to the left side */
+    top: 50%;             /* Center vertically */
+    transform: translateY(-50%); /* Perfect vertical centering */
+    background-color: rgba(0,0,0,0.6); /* Semi-transparent background */
+    color: white;
+    padding: 10px;
+    border-radius: 0 10px 10px 0; /* Rounded edges on the right */
+    z-index: 1000;        /* Make sure it's above other content */
+    font-family: sans-serif;
+  }
+
+  #music-player button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  #music-player button:hover {
+    background-color: white;
+    color: black;
+  }
+</style>
+
+<!-- HTML -->
+<div id="music-player">
+  <p id="song-title" style="margin: 0 0 10px 0; font-weight: bold; text-align: center;">🎵 No song playing</p>
+  <button onclick="prevSong()">⏮ Prev</button>
+  <button onclick="toggleMusic()">▶️ Play / ⏸ Pause</button>
+  <button onclick="nextSong()">⏭ Next</button>
+</div>
+
+<audio id="bg-music"></audio>
+
+<script>
+  const bgMusic = document.getElementById('bg-music');
+  const songTitle = document.getElementById('song-title');
+
+  // Playlist
+  const songs = [
+    {
+      title: "Mii Maker - Editing Mii",
+      src: "file:///C:/Users/kimyh/Downloads/64.%20Mii%20Maker%20Editing%20Mii%20(TV%20+%20Gamepad).mp3"
+    },
+    {
+      title: "Soft Knees - Winds Of Fjords (Roblox Soundtrack)",
+      src: "file:///C:/Users/kimyh/Downloads/Soft%20Knees%20-%20Winds%20Of%20Fjords%20(minomus%202022%20remaster)%20-%20roblox%20soundtrack.mp3"
+    },
+    {
+      title: "Lounge Event",
+      src: "file:///C:/Users/kimyh/Downloads/12%20-%20Lounge%20Event.mp3"
+    }
+  ];
+
+  let currentSongIndex = 0;
+
+  // Play current song
+  function playSong() {
+    const song = songs[currentSongIndex];
+    bgMusic.src = song.src;
+    songTitle.textContent = "🎶 " + song.title;
+    bgMusic.play().catch(err => console.warn("Playback blocked:", err));
+  }
+
+  // Next song
+  function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    playSong();
+  }
+
+  // Previous song
+  function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    playSong();
+  }
+
+  // When a song ends, go to the next automatically
+  bgMusic.addEventListener('ended', nextSong);
+
+  // Toggle play/pause
+  function toggleMusic() {
+    if (bgMusic.paused) {
+      if (!bgMusic.src) {
+        playSong();
+      } else {
+        bgMusic.play();
+      }
+    } else {
+      bgMusic.pause();
+    }
+  }
+</script>
+
+<!-- CSS -->
+<style>
+  #music-player {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+    z-index: 1000;
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  #music-player button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+  #music-player button:hover {
+    background-color: white;
+    color: black;
+  }
+
+  #song-title {
+    font-size: 14px;
+  }
+</style>
+
+  <!-- Main -->  
+ 
+  <div class="main-content" id="main-content">
+   <div class="gif-player">
+  <img src="file:///C:/Users/kimyh/Downloads/1000042018.gif" 
+       alt="Oc GIF" 
+       data-audio="file:///C:/Users/kimyh/Downloads/roblox-death-sound-sound-effect-(hd)-made-with-Voicemod.mp3" 
+       style="cursor:pointer;">
+</div>
+    <img src="file:///C:/Users/kimyh/Downloads/1000043307.png">
+    <p>My personal project that took Months to make T_T</p>
+
+<div class="soundboard" style="background-color:#8000ff; padding:30px; border-radius:20px; text-align:center; max-width:800px; margin:0 auto; box-shadow:0 0 20px rgba(0,0,0,0.3);">
+  <h1 style="color:#fff; margin-bottom:30px;"><b>Random soundboard my siblings wanted dX</b></h1>
+
+  <div class="gif-container" style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:20px;">
+    <div class="gif-player">
+      <img src="https://media.tenor.com/jEug4zOUCTEAAAAj/baldi-playtime.gif" alt="Baldi" data-audio="BAL_AllNotebooks_4_Plus_V0.5.2-[AudioTrimmer.com].mp3" style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+    </div>
+
+    <div class="gif-player">
+      <img src="https://media.tenor.com/NOQxSlqoagoAAAAi/bfdi-fanny-fanny-bfdi.gif" alt="BFDI" data-audio="i-hate-you.mp3" style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+    </div>
+
+    <div class="gif-player">
+      <img src="https://media1.tenor.com/m/3nVpaMau8MAAAAAC/dragon-ball-z-goku.gif" alt="Goku" data-audio="fahh-normal-made-with-Voicemod.mp3" style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+    </div>
+
+    <div class="gif-player">
+      <img src="https://media1.tenor.com/m/l7YEDP0dlSgAAAAd/c00lkidd-and-007n7-007n7-and-c00lkidd.gif" alt="Corrupt Nature" data-audio="corrupt-nature!-made-with-Voicemod.mp3" style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+    </div>
+
+    <div class="gif-player">
+      <img src="https://media.tenor.com/0gNuAJcU-R4AAAAj/noise-the-noise.gif" alt="Noise" data-audio="noise-is-calling-pick-up-the-phone-made-with-Voicemod.mp3" style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+    </div>
+	
+	<!-- Hatsune Miku GIF -->
+<div class="gif-player">
+  <img src="https://media1.tenor.com/m/2V6qTQW7hdUAAAAd/miku.gif" 
+       alt="Hatsune Miku Popipo" 
+       data-audio="file:///C:/Users/kimyh/Downloads/hatsune-miku-gasolina-made-with-Voicemod.mp3" 
+       style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+</div>
+
+	
+	<!-- Wii Sports GIF -->
+<div class="gif-player">
+  <img src="https://media.tenor.com/9xyjWsUEOvYAAAAj/wii-sports-wii-spinning.gif" 
+       alt="Wii Sports Bowling Strike" 
+       data-audio="file:///C:/Users/kimyh/Downloads/wii-sports-bowling-strike-made-with-Voicemod.mp3" 
+       style="cursor:pointer; width:200px; border-radius:8px; transition: transform 0.2s ease;">
+</div>
+	
+  </div>
+</div>
+
+
+
+
+<script>
+  // Click-to-play for all GIFs in the soundboard
+  const gifs = document.querySelectorAll('.gif-player img');
+
+  gifs.forEach(gif => {
+    const audioSrc = gif.getAttribute('data-audio');
+    const audio = new Audio(audioSrc);
+
+    gif.addEventListener('click', () => {
+      // Pause all other audios
+      document.querySelectorAll('audio').forEach(a => a.pause());
+
+      // Play this one
+      audio.currentTime = 0;
+      audio.play().catch(err => console.warn("Playback blocked:", err));
+    });
+  });
+</script>
+
+
+    <div class="box-container">
+      <div class="bio-box">
+        <small><i><b><u>HI, welcome to my little creation ;) I took a web creation class and its been SO LONG since i put it to work so i made this, it took a few weeks or even a month i'm guessing but none the less, This website tells a tale about yo boi (PoliteParrot) and what i do. I created this place as my safe spot to do what i want... think of it like a minecraft world or that ready player one book, but WAY more complex then both of those things combined LOLZ! But i may up date frequently (and quick note... MY SPELLING IS CHEEKS T_T) also big credits to my geometry/old web creation teacher, no full names for HIS safety :) and My boy (classmate/buddy) ...who loves pet toasters and played SCP foundation with me :3... and a little chat gpt. My favorite colors are red and blue (wich make purple) and I do VARSITY WRESTLING at my school XDD I run in my school's XC team (cross country) and will soon attend there GOLF team! I love Rec Room and Roblox BOTH and am a True God fearing man of christ (Im a believer) I also watch anime and a do LOTS of other stuff... BUT ANYWAYS ENJOY YOUR STAY ;D (Links and ETC are to your right or if your using your phone, to your bottom)</u></b></i></small>
+		<h2>⠀⠀
+⣤⣶⣶⡿⠿⠿⠿⠿⠿⣶⣶⣶⠄⠀⠀⠐⢶⣶⣶⣿⡿⠿⠿⠿⠿⢿⣷⠦⠀
+⠙⠏⠁⠀⣤⣶⣶⣶⣶⣒⢳⣆⠀⠀⠀⠀⢠⡞⣒⣲⣶⣖⣶⣦⡀⠀⠉⠛⠁
+⠀⠀⠴⢯⣁⣿⣿⣿⣏⣿⡀⠟⠀⠀⠀⠀⠸⠀⣼⣋⣿⣿⣿⣦⣭⠷⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠟⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡄⠀⢰⠏⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⡴⠟⠁⢀⡟⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠸⡗⠶⠶⠶⠶⠶⠖⠚⠛⠛⠋⠉⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀</h2>
+      </div>
+      <div class="extra-box">
+        <a href="https://www.youtube.com/@PoliteParrot8913" target="_blank">
+          <img src="https://www.pngarts.com/files/9/Vector-YouTube-Logo-PNG-Transparent-Image.png" width="150" height="150" style="border-radius:10px; margin:10px;">
+        </a>
+        <a href="https://rec.net/user/PoliteParrot8913" target="_blank">
+          <img src="https://th.bing.com/th/id/R.cf1a2464815d815081f63f933a0f4c49?rik=bYmtJOqWNvqacQ&pid=ImgRaw&r=0" width="100" height="100" style="border-radius:10px; margin:10px;">
+        </a>
+        <a href="https://www.roblox.com/users/7426851336/profile" target="_blank">
+          <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-45DFB31B4D0D2886E506CDC540CFAEAE-Png/150/150/AvatarHeadshot/Webp/noFilter" width="100" height="100" style="border-radius:50%; margin:10px;">
+        </a>
+		<img src="https://www.mabsland.com/Pandas/Censor_Gb.gif">
+		<a href="https://bonkiscoolsite.neocities.org/" target="_blank">
+  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/misc/cutecat.gif" alt="Cute Cat">
+</a>
+
+		<a href="https://melonking.net/melon.html?z=/universe/melozorbs/" target="_blank">
+  <img src="https://melonking.net/universe/melozorbs/images/sniffilwiz.gif" alt="MeloZorbs Sniffilwiz">
+</a>
+
+      </div>
+    </div>
+
+
+	<h1><b>Gifs and png's i found in <a href="https://adriansblinkiecollection.neocities.org/" 
+   style="text-decoration: underline; color: #00f; font-weight: bold; animation: blink 1s step-start infinite;">
+   This Neocity website
+</a></h1></b>
+
+<style>
+@keyframes blink {
+  30% { opacity: 0; }
+}
+</style>
+
+	
+	<img src="https://adriansblinkiecollection.neocities.org/dividers/bluecoil.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+       filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff);
+     ">
+
+    <!-- Big GIF Line -->
+    <div class="gif-assembly-line">
+      <div class="gif-track" id="gifTrack">
+        <div class="gif-set">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/nescenter.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/n64_com_now.gif">
+          <img src="https://fish.golf/bestvieweddesktop.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/newgrounds.gif">
+          <img src="https://cyber.dabamos.de/88x31/webpeople.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/vlc.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/minecraft.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/gameboy.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/spotify.gif">
+          <img src="https://adriansblinkiecollection.neocities.org/buttons/a60.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/pepsi.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bestviewedwith.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/learn_html.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/netflix-88x31.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bob.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/void.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/misc-homebrew.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/nintendo-wii.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/steam.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/pinguonline.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/adobe_asanim1.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/newlambda.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/psbutton.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/webdesign.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/sega_online.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/linux-directory.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/desp-anim.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bonkibutton.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/ngs_88x31_logo.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/trafficconebutton.png">
+		  <img src="https://www.mabsland.com/Pandas/Censor_Gc.gif">
+		  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bonkicoolbutton.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a106.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a115.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b16.png">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b5.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e5.gif">
+	  	  <img src="https://adriansblinkiecollection.neocities.org/buttons/e28.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e36.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e23.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e13.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a110.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a113.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a36.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a6.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/d18.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/d9.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b12.gif">
+		  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/wow_wow.gif">
+        </div>
+        <div class="gif-set clone"></div>
+      </div>
+    </div>
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/stardivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+ <!-- STAMP LINE -->
+<div class="gif-stamps-line">
+  <div class="gif-stamps-track">
+    <!-- One full set of stamps -->
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/524f4ab077e0562e889acdefb23e76ec5d8ac0e4.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tumblr_inline_mr1o1yHhYQ1qz4rgp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tf2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr01.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/reefblower.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/404_by_skystamps-dc2lsbz.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/12b92dcc.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/club_penguin_stamp_by_theorangewolf.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/life_is_by_kicked_in_teeth-dbtn7fu.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/i_love_you_by_kicked_in_teeth-dbstzed.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/crystal_pepsi_stamp_by_namelessstamps-daeay60.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/d1iu6ng-6c168f8a-6497-4644-aa78-40a76f5ca424.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/squidstamp.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/catstamp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ballpit.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/smiley.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/8.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr02.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr03.png">
+    <!-- Duplicate the entire set for seamless looping -->
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/524f4ab077e0562e889acdefb23e76ec5d8ac0e4.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tumblr_inline_mr1o1yHhYQ1qz4rgp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tf2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr01.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/reefblower.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/404_by_skystamps-dc2lsbz.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/12b92dcc.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/club_penguin_stamp_by_theorangewolf.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/life_is_by_kicked_in_teeth-dbtn7fu.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/i_love_you_by_kicked_in_teeth-dbstzed.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/crystal_pepsi_stamp_by_namelessstamps-daeay60.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/d1iu6ng-6c168f8a-6497-4644-aa78-40a76f5ca424.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/squidstamp.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/catstamp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ballpit.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/smiley.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/8.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr02.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr03.png">
+  </div>
+</div>
+
+<style>
+/* Container that holds the scrolling track */
+.gif-stamps-line {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: none;
+  line-height: 0; /* remove invisible hover gap */
+}
+
+/* The moving track of images */
+.gif-stamps-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 60s linear infinite;
+}
+
+/* Each stamp image */
+.gif-stamps-track img {
+  height: 56px;
+  margin: 0 3px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+/* Small hover pop for fun */
+.gif-stamps-track img:hover {
+  transform: scale(1.1);
+}
+
+/* Pause only when hovering over the track or an image */
+.gif-stamps-track:hover {
+  animation-play-state: paused;
+}
+
+/* Animation for infinite scrolling */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/smileydivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+<!-- New Scroll Line (Below Stamp Line) -->
+<div class="gif-assembly-line">
+      <div class="gif-track" id="gifTrack">
+        <div class="gif-set">
+	<img src="https://adriansblinkiecollection.neocities.org/q5.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/ctrlaltdel.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/I3css.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/0146-kirbydance.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/iambonki.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/eat%20coco.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/garfieald.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/pepermints.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/imisswinter.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tumblr_pc38rqsNC61u4h28eo1_250.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/chese.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/909043q79g7enuyi.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tumblr_9c0fcb142163388e4537e0e85565c023_09041690_250.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/water.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/l3.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tomanytabs.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b28.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b2.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/s11.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/y46.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/homestaradvice.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/scoutred.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/country.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/sbemaillappy.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/y39.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/z14.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/k15.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/g78.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/k36.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/d23.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/a63.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/v49.gif">
+  </div>
+        <div class="gif-set clone"></div>
+      </div>
+    </div>
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/greenarrowdivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+<!-- Left box: My fav foods -->
+<div style="flex: 2; background-color: #8000ff; color: white; padding: 20px; border-radius: 15px; min-height: 300px;">
+  <h2 style="margin-top: 0;">My Fav Foods</h2>
+  <p>
+    <!-- GIF -->
+    <img src="https://media1.tenor.com/m/ii3J7oGAMKIAAAAC/es-teh-teh-manis.gif" 
+         alt="sweettea GIF" style="width:150px; border-radius:8px; margin-right: 10px;">
+		 <p style="margin-top: 8px; font-weight: bold;">Sweet tea</p>
+    <!-- Steak Image -->
+    <img src="https://www.thedailymeal.com/img/gallery/gelatin-sheets-are-the-secret-to-demi-glace-in-a-fraction-of-the-time/intro-1705433488.jpg" 
+         alt="Steak" style="width:180px; border-radius:8px; margin-left: 10px;">
+		 <p style="margin-top: 8px; font-weight: bold;">Steak</p>
+  </p>
+
+  <!-- Mint Chocolate Chip GIF with caption -->
+  <div style="margin-top: 20px; text-align: center;">
+    <img src="https://media1.tenor.com/m/rJf7qzl8x3MAAAAd/mint-choco-cookie-cupcake.gif" 
+         alt="Mint Chocolate Chip Ice Cream" style="width:200px; border-radius:8px;">
+    <p style="margin-top: 8px; font-weight: bold;">Mint Chocolate Chip Ice Cream</p>
+  </div>
+  
+  <img src="https://media1.tenor.com/m/8h2o7PqDfp8AAAAC/yupdduk-korean.gif"
+	alt="koreanfood GIF" style="width:200px; border-radius:8px;">
+	<p style="margin-top: 8px; font-weight: bold;">tteokbokki</p>
+  
+  <img src="https://assets.entrepreneur.com/content/3x2/2000/20180105171511-RainbowIceNon-Dairy1.jpeg"
+	alt="dippi dots GIF" style="width:200px; border-radius:8px;">
+	<p style="margin-top: 8px; font-weight: bold;">Dippin dots</p>
+  
+  <img src="https://i.pinimg.com/736x/39/90/79/399079c3591cc37617c402d2447f77be.jpg"
+	alt="yellowrice GIF" style="width:200px; border-radius:8px;">
+	<p style="margin-top: 8px; font-weight: bold;">yellow rice and chicken/beef</p>
+  
+  <img src="https://th.bing.com/th/id/R.707ed976e4acf6542d49175cc8a964b6?rik=eAW%2bB1gjwS7z%2bg&pid=ImgRaw&r=0"
+	alt="blackbean GIF" style="width:200px; border-radius:8px;">
+	<p style="margin-top: 8px; font-weight: bold;">instant blackbean noodles</p>
+	
+	<img src="https://th.bing.com/th/id/R.ce30452af56b45e27db6bf0f000c1492?rik=HIYantzsnWFi6A&pid=ImgRaw&r=0"
+	alt="Pho PNG"style="width:200px; border-radius:8px;">
+	<p style="margin-top: 8px; font-weight: bold;">My grandma's Pho</p>
+  
+</div>
+<tetris-game>
+<script>
+class TetrisGame extends HTMLElement {
+  constructor() {
+    super();
+    // Create shadow DOM
+    this.attachShadow({mode: 'open'});
+
+    // Inner HTML (isolated CSS + canvas + score)
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: inline-block;
+          font-family: Arial, sans-serif;
+          color: #fff;
+        }
+        .tetris-container {
+          display: flex;
+          gap: 20px;
+          align-items: flex-start;
+        }
+        canvas {
+          background: #222;
+          border: 2px solid #fff;
+        }
+        .score-board {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      </style>
+      <div class="tetris-container">
+        <canvas id="tetris" width="240" height="400"></canvas>
+        <div class="score-board">
+          <h2>Score: <span id="score">0</span></h2>
+        </div>
+      </div>
+    `;
+
+    this.canvas = this.shadowRoot.getElementById('tetris');
+    this.context = this.canvas.getContext('2d');
+    this.context.scale(20, 20);
+
+    this.scoreElement = this.shadowRoot.getElementById('score');
+
+    this.initGame();
+  }
+
+  initGame() {
+    const canvas = this.canvas;
+    const context = this.context;
+    const scoreElement = this.scoreElement;
+
+    const colors = [
+      null,
+      '#FF0D72',
+      '#0DC2FF',
+      '#0DFF72',
+      '#F538FF',
+      '#FF8E0D',
+      '#FFE138',
+      '#3877FF'
+    ];
+
+    function createMatrix(w, h) {
+      const matrix = [];
+      while (h--) matrix.push(new Array(w).fill(0));
+      return matrix;
+    }
+
+    function createPiece(type) {
+      if (type === 'T') return [[0,1,0],[1,1,1],[0,0,0]];
+      if (type === 'O') return [[2,2],[2,2]];
+      if (type === 'L') return [[0,0,3],[3,3,3],[0,0,0]];
+      if (type === 'J') return [[4,0,0],[4,4,4],[0,0,0]];
+      if (type === 'I') return [[0,5,0,0],[0,5,0,0],[0,5,0,0],[0,5,0,0]];
+      if (type === 'S') return [[0,6,6],[6,6,0],[0,0,0]];
+      if (type === 'Z') return [[7,7,0],[0,7,7],[0,0,0]];
+    }
+
+    function drawMatrix(matrix, offset) {
+      matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+          if (value !== 0) {
+            context.fillStyle = colors[value];
+            context.fillRect(x + offset.x, y + offset.y, 1, 1);
+          }
+        });
+      });
+    }
+
+    function merge(arena, player) {
+      player.matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+          if (value !== 0) arena[y + player.pos.y][x + player.pos.x] = value;
+        });
+      });
+    }
+
+    function collide(arena, player) {
+      const [m, o] = [player.matrix, player.pos];
+      for (let y=0; y<m.length; y++) {
+        for (let x=0; x<m[y].length; x++) {
+          if (m[y][x] !==0 && (arena[y+o.y] && arena[y+o.y][x+o.x]) !==0) return true;
+        }
+      }
+      return false;
+    }
+
+    function rotate(matrix, dir) {
+      for (let y=0; y<matrix.length; y++) {
+        for (let x=0; x<y; x++) {
+          [matrix[x][y], matrix[y][x]] = [matrix[y][x], matrix[x][y]];
+        }
+      }
+      if (dir>0) matrix.forEach(row => row.reverse());
+      else matrix.reverse();
+    }
+
+    function arenaSweep() {
+      outer: for (let y=arena.length-1; y>=0; y--) {
+        for (let x=0; x<arena[y].length; x++) {
+          if (arena[y][x] === 0) continue outer;
+        }
+        const row = arena.splice(y, 1)[0].fill(0);
+        arena.unshift(row);
+        player.score += 10;
+        scoreElement.innerText = player.score;
+        y++;
+      }
+    }
+
+    function playerDrop() {
+      player.pos.y++;
+      if (collide(arena, player)) {
+        player.pos.y--;
+        merge(arena, player);
+        playerReset();
+        arenaSweep();
+      }
+      dropCounter = 0;
+    }
+
+    function playerMove(dir) {
+      player.pos.x += dir;
+      if (collide(arena, player)) player.pos.x -= dir;
+    }
+
+    function playerReset() {
+      const pieces = 'TJLOSZI';
+      player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
+      player.pos.y = 0;
+      player.pos.x = (arena[0].length/2 | 0) - (player.matrix[0].length/2 | 0);
+      if (collide(arena, player)) {
+        arena.forEach(row => row.fill(0));
+        player.score = 0;
+        scoreElement.innerText = player.score;
+      }
+    }
+
+    function playerRotate(dir) {
+      const pos = player.pos.x;
+      let offset = 1;
+      rotate(player.matrix, dir);
+      while (collide(arena, player)) {
+        player.pos.x += offset;
+        offset = -(offset + (offset>0?1:-1));
+        if (offset > player.matrix[0].length) {
+          rotate(player.matrix, -dir);
+          player.pos.x = pos;
+          return;
+        }
+      }
+    }
+
+    function draw() {
+      context.fillStyle = '#222';
+      context.fillRect(0,0,canvas.width,canvas.height);
+      drawMatrix(arena, {x:0, y:0});
+      drawMatrix(player.matrix, player.pos);
+    }
+
+    function update(time = 0) {
+      const deltaTime = time - lastTime;
+      lastTime = time;
+      dropCounter += deltaTime;
+      if (dropCounter > dropInterval) playerDrop();
+      draw();
+      requestAnimationFrame(update);
+    }
+
+    const arena = createMatrix(12, 20);
+    const player = { pos: {x:0, y:0}, matrix: null, score: 0 };
+
+    let dropCounter = 0;
+    let dropInterval = 1000;
+    let lastTime = 0;
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') playerMove(-1);
+      else if (event.key === 'ArrowRight') playerMove(1);
+      else if (event.key === 'ArrowDown') playerDrop();
+      else if (event.key === 'q') playerRotate(-1);
+      else if (event.key === 'w') playerRotate(1);
+    });
+
+    playerReset();
+    update();
+  }
+}
+
+customElements.define('tetris-game', TetrisGame);
+</script>
+</tetris-game>
+
+<script>
+  // Array of readable colors
+  const colors = ["#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#00ffff", "#ffa500"];
+  let index = 0;
+
+  function changeColor() {
+    const text = document.getElementById("colorText");
+    text.style.color = colors[index];
+    index = (index + 1) % colors.length;
+  }
+
+  // Change color every 1 second
+  setInterval(changeColor, 1000);
+</script>
+
+
+<script>
+  // Array of readable colors
+  const colors = ["#ff0000", "#00ff00", "#0000ff", "#ff00ff", "#00ffff", "#ffa500"];
+  let index = 0;
+
+  function changeColor() {
+    const text = document.getElementById("colorText");
+    text.style.color = colors[index];
+    index = (index + 1) % colors.length;
+  }
+
+  // Change color every 1 second
+  setInterval(changeColor, 1000);
+</script>
+
+<!-- PAC-MAN GAME SECTION START -->
+<div id="pacman-section">
+
+<style>
+#pacman-section{
+  background:black;
+  color:yellow;
+  font-family:Arial, sans-serif;
+  text-align:center;
+  padding:20px;
+}
+
+#pacman-container{
+  position:relative;
+  width:fit-content;
+  margin:auto;
+}
+
+#pacman-canvas{
+  background:black;
+  border:4px solid yellow;
+  display:block;
+}
+
+#pacman-overlay{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  font-size:22px;
+}
+
+#pacman-overlay button{
+  padding:10px 20px;
+  margin-top:15px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#pacman-ui{
+  margin-bottom:10px;
+}
+
+.pac-btn{
+  padding:8px 14px;
+  margin:4px;
+  font-size:18px;
+}
+</style>
+
+<div id="pacman-ui">
+Score: <span id="p-score">0</span> |
+Lives: <span id="p-lives">3</span> |
+Level: <span id="p-level">1</span>
+</div>
+
+<div id="pacman-container">
+  <canvas id="pacman-canvas"></canvas>
+
+  <div id="pacman-overlay">
+    <div>READY?</div>
+    <button onclick="pacStart()">START GAME</button>
+  </div>
+</div>
+
+<div>
+  <button class="pac-btn" onclick="pacDir(0,-1)">⬆️</button><br>
+  <button class="pac-btn" onclick="pacDir(-1,0)">⬅️</button>
+  <button class="pac-btn" onclick="pacDir(1,0)">➡️</button><br>
+  <button class="pac-btn" onclick="pacDir(0,1)">⬇️</button>
+</div>
+
+<script>
+(function(){
+
+const tile=20;
+const layout=[
+"1111111111111111111",
+"1300000001000000001",
+"1011111101011111101",
+"1000000000000000001",
+"1010111111111101011",
+"1000100001000100001",
+"1110101111010110111",
+"1000001000001000001",
+"1011111011111011111",
+"1000000000000000001",
+"1111111111111111111"
+];
+
+const rows=layout.length;
+const cols=layout[0].length;
+
+const canvas=document.getElementById("pacman-canvas");
+canvas.width=cols*tile;
+canvas.height=rows*tile;
+const ctx=canvas.getContext("2d");
+
+let map,pellets;
+let score=0,lives=3,level=1;
+let interval,speed=120;
+let frightenedTimer;
+
+const pac={x:1,y:1,dx:0,dy:0};
+
+const ghostDefs=[
+{color:"red",type:"chase"},
+{color:"pink",type:"ambush"},
+{color:"cyan",type:"random"},
+{color:"orange",type:"scatter"}
+];
+
+let ghosts;
+
+function initLevel(){
+  map=layout.map(r=>r.split("").map(Number));
+  pellets=0;
+  map.forEach(r=>r.forEach(c=>{
+    if(c===0||c===3) pellets++;
+  }));
+  pac.x=1;pac.y=1;pac.dx=0;pac.dy=0;
+
+  ghosts=ghostDefs.map((g,i)=>({
+    x:9+i%2,y:5+Math.floor(i/2),
+    color:g.color,
+    type:g.type,
+    frightened:false
+  }));
+}
+
+window.pacStart=function(){
+  document.getElementById("pacman-overlay").style.display="none";
+  score=0;lives=3;level=1;speed=120;
+  initLevel();
+  updateUI();
+  interval=setInterval(loop,speed);
+}
+
+window.pacDir=function(x,y){
+  pac.dx=x;pac.dy=y;
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowUp")pacDir(0,-1);
+  if(e.key==="ArrowDown")pacDir(0,1);
+  if(e.key==="ArrowLeft")pacDir(-1,0);
+  if(e.key==="ArrowRight")pacDir(1,0);
+});
+
+function updateUI(){
+  document.getElementById("p-score").textContent=score;
+  document.getElementById("p-lives").textContent=lives;
+  document.getElementById("p-level").textContent=level;
+}
+
+function movePac(){
+  let nx=pac.x+pac.dx;
+  let ny=pac.y+pac.dy;
+
+  if(nx<0) nx=cols-1;
+  if(nx>=cols) nx=0;
+
+  if(map[ny][nx]!==1){
+    pac.x=nx;pac.y=ny;
+  }
+
+  if(map[pac.y][pac.x]===0){
+    map[pac.y][pac.x]=2;
+    score+=10; pellets--;
+  }
+
+  if(map[pac.y][pac.x]===3){
+    map[pac.y][pac.x]=2;
+    score+=50; pellets--;
+    frighten();
+  }
+}
+
+function frighten(){
+  ghosts.forEach(g=>g.frightened=true);
+  clearTimeout(frightenedTimer);
+  frightenedTimer=setTimeout(()=>{
+    ghosts.forEach(g=>g.frightened=false);
+  },6000);
+}
+
+function ghostTarget(g){
+  if(g.type==="chase") return {x:pac.x,y:pac.y};
+  if(g.type==="ambush") return {x:pac.x+pac.dx*4,y:pac.y+pac.dy*4};
+  if(g.type==="random") return {x:Math.random()*cols,y:Math.random()*rows};
+  if(g.type==="scatter"){
+    let d=Math.abs(g.x-pac.x)+Math.abs(g.y-pac.y);
+    if(d<5) return {x:cols-2,y:1};
+    return {x:pac.x,y:pac.y};
+  }
+}
+
+function moveGhosts(){
+  ghosts.forEach(g=>{
+    let target=ghostTarget(g);
+    let best=null,bestDist=9999;
+
+    [[1,0],[-1,0],[0,1],[0,-1]].forEach(dir=>{
+      let nx=g.x+dir[0],ny=g.y+dir[1];
+      if(nx<0)nx=cols-1;
+      if(nx>=cols)nx=0;
+      if(map[ny][nx]!==1){
+        let dist=Math.abs(nx-target.x)+Math.abs(ny-target.y);
+        if(g.frightened) dist*=-1;
+        if(dist<bestDist){bestDist=dist;best=dir;}
+      }
+    });
+
+    if(best){g.x+=best[0];g.y+=best[1];}
+
+    if(g.x===pac.x&&g.y===pac.y){
+      if(g.frightened){
+        score+=200;
+        g.x=9;g.y=5;
+      }else loseLife();
+    }
+  });
+}
+
+function loseLife(){
+  lives--;
+  if(lives<=0) return endGame("GAME OVER");
+  pac.x=1;pac.y=1;
+}
+
+function nextLevel(){
+  level++;
+  speed=Math.max(60,speed-10);
+  clearInterval(interval);
+  initLevel();
+  interval=setInterval(loop,speed);
+}
+
+function endGame(text){
+  clearInterval(interval);
+  document.getElementById("pacman-overlay").innerHTML=
+    "<div>"+text+"</div><button onclick='pacStart()'>RESTART</button>";
+  document.getElementById("pacman-overlay").style.display="flex";
+}
+
+function update(){
+  movePac();
+  moveGhosts();
+  updateUI();
+  if(pellets===0) nextLevel();
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let y=0;y<rows;y++){
+    for(let x=0;x<cols;x++){
+      if(map[y][x]===1){
+        ctx.fillStyle="blue";
+        ctx.fillRect(x*tile,y*tile,tile,tile);
+      }
+      if(map[y][x]===0){
+        ctx.fillStyle="white";
+        ctx.beginPath();
+        ctx.arc(x*tile+10,y*tile+10,3,0,Math.PI*2);
+        ctx.fill();
+      }
+      if(map[y][x]===3){
+        ctx.fillStyle="white";
+        ctx.beginPath();
+        ctx.arc(x*tile+10,y*tile+10,6,0,Math.PI*2);
+        ctx.fill();
+      }
+    }
+  }
+
+  ctx.fillStyle="yellow";
+  ctx.beginPath();
+  ctx.arc(pac.x*tile+10,pac.y*tile+10,8,0.2*Math.PI,1.8*Math.PI);
+  ctx.lineTo(pac.x*tile+10,pac.y*tile+10);
+  ctx.fill();
+
+  ghosts.forEach(g=>{
+    ctx.fillStyle=g.frightened?"blue":g.color;
+    ctx.beginPath();
+    ctx.arc(g.x*tile+10,g.y*tile+10,8,Math.PI,0);
+    ctx.lineTo(g.x*tile+18,g.y*tile+18);
+    ctx.lineTo(g.x*tile+2,g.y*tile+18);
+    ctx.closePath();
+    ctx.fill();
+  });
+}
+
+function loop(){
+  update();
+  draw();
+}
+
+})();
+</script>
+
+</div>
+<!-- PAC-MAN GAME SECTION END -->
+
+<!-- Sun Conure Mouse Pet -->
+<div id="sunConurePet">🦜</div>
+
+<style>
+#sunConurePet {
+  position: fixed;
+  left: 0;
+  top: 0;
+  font-size: 36px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9999;
+  transform: translate(0,0);
+  transition: transform 0.05s linear;
+}
+</style>
+
+<script>
+const pet = document.getElementById("sunConurePet");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let petX = mouseX;
+let petY = mouseY;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animatePet() {
+  const speed = 0.08;
+
+  petX += (mouseX - petX) * speed;
+  petY += (mouseY - petY) * speed;
+
+  pet.style.transform = `translate(${petX}px, ${petY}px)`;
+
+  requestAnimationFrame(animatePet);
+}
+
+animatePet();
+</script>
+
+
+<!-- UNDER CONSTRUCTION SECTION -->
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #111;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0 0 15px rgba(255,255,0,0.5);
+  text-align: center;
+">
+  <!-- Top divider -->
+  <img src="https://adriansblinkiecollection.neocities.org/dividers/cautiondivider2.gif"
+       alt="Caution Divider"
+       style="width: 100%; max-width: 600px; margin-bottom: 15px;">
+
+  <!-- Title -->
+  <h1 style="color:#ffeb3b; text-shadow:0 0 10px #ffeb3b; margin: 10px 0;">
+    🚧 UNDER CONSTRUCTION 🚧
+  </h1>
+
+  <!-- Construction GIF -->
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXc1c284Z2F6bGE0Y3l6bGR3a2J2NGtqa3FtOGxkbzFiMTQ2cnlnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wLa0m8uCyEZGhNS6dT/giphy.gif"
+       alt="Under Construction"
+       style="width: 200px; border-radius: 10px; margin: 20px 0; box-shadow: 0 0 20px #ffeb3b;">
+
+  <!-- Warning sign -->
+  <img src="https://th.bing.com/th/id/R.60a1350fdec7b81be0d816506578e901?rik=HzIuRjr%2f%2b4MkYg&pid=ImgRaw&r=0"
+       alt="Warning Sign"
+       style="width: 150px; border-radius: 10px; margin-top: 10px;">
+
+  <!-- Bottom divider -->
+  <img src="https://adriansblinkiecollection.neocities.org/dividers/cautiondivider2.gif"
+       alt="Caution Divider"
+       style="width: 100%; max-width: 600px; margin-top: 15px;">
+
+  <p style="margin-top: 20px; font-size: 18px; color: #ccc;">
+    This section is still being worked on! Come back soon 😎
+  </p>
+  
+</div>
+
+
+
+  <div class="footer">
+    <p>Created with 💻 by <strong>V.H. (PoliteParrot8913)</strong> and ChatGPT... a little ;)</p>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('splash-page').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }
+
+    const faviconImages = [
+      'https://www.pngplay.com/wp-content/uploads/2/Christian-Cross-PNG-Clipart-Background.png',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-26160329605491C4ACCDB867DD673584-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://img.rec.net/2r5yjgu64jcp8u1uo8qz9hp3p.jpg?width=192&cropSquare=true'
+    ];
+    let currentFaviconIndex = 0;
+    setInterval(() => {
+      currentFaviconIndex = (currentFaviconIndex + 1) % faviconImages.length;
+      document.getElementById('favicon').href = faviconImages[currentFaviconIndex];
+    }, 500);
+
+    // Clone the first GIF set for seamless scroll
+    const gifSet = document.querySelector('.gif-set');
+    document.querySelector('.clone').innerHTML = gifSet.innerHTML;
+  </script>
+  <script>
+window.addEventListener("keydown", function(e) {
+    // Check if the pressed key is an arrow key
+    if(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault(); // Stop the page from scrolling
+        // You can add your custom behavior here
+        console.log(e.key + " pressed");
+    }
+});
+</script>
+</body>
+</html>
