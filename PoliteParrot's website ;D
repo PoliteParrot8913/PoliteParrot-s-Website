@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>PoliteParrot's Website</title>
+
+  <link id="favicon" rel="icon" href="https://media.tenor.com/wigRTU5BpY0AAAAj/madness-combat.gif" type="image/gif" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+    }
+
+    .splash-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://tse2.mm.bing.net/th/id/OIP.uukE1Cw2IcadS6maAvy30QHaNK?w=1440&h=2560&rs=1&pid=ImgDetMain&o=7&rm=3');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .splash-title {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff00ff;
+      text-shadow: 0 0 10px white, 0 0 20px #ff00ff;
+    }
+
+    .enter-btn {
+      background: url('https://media.tenor.com/z4n7mGM0VC4AAAAi/agencylife-agenturleben.gif') no-repeat center;
+      background-size: contain;
+      border: none;
+      width: 250px;
+      height: 150px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .main-content {
+      display: none;
+      text-align: center;
+      padding: 50px;
+      background-color: #111;
+      min-height: 100vh;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+    }
+
+    .bio-box, .extra-box {
+      flex: 1 1 300px;
+      padding: 30px;
+      border-radius: 15px;
+      min-height: 250px;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .bio-box { background-color: #d62828; }
+    .extra-box { background-color: #003049; }
+
+    .music-sidebar {
+      background: linear-gradient(to bottom, red, purple, blue);
+      padding: 20px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 50px;
+    }
+
+    .music-sidebar h3 {
+      margin-bottom: 15px;
+    }
+
+    .music-sidebar iframe {
+      display: block;
+      margin: 10px auto;
+      border-radius: 10px;
+    }
+
+    /* === Assembly Line (Left to Right) === */
+    .gif-assembly-line {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
+      border-top: 3px solid #ff00ff;
+      border-bottom: 3px solid #00ffff;
+      margin-top: 50px;
+      white-space: nowrap;
+    }
+
+    .gif-track {
+      display: inline-flex;
+      animation: scrollRight 80s linear infinite;
+    }
+
+    .gif-assembly-line:hover .gif-track {
+      animation-play-state: paused;
+    }
+
+    .gif-track img {
+      height: 80px;
+      margin: 0 20px;
+      border-radius: 10px;
+    }
+
+    @keyframes scrollRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* === Stamp Line (Right to Left) === */
+    .gif-stamps-line {
+      width: 100%;
+      overflow: hidden;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 10px 0;
+      border-top: 3px solid #00ffff;
+      border-bottom: 3px solid #ff00ff;
+      margin-top: 20px;
+      white-space: nowrap;
+    }
+
+    .gif-stamps-track {
+      display: inline-flex;
+      animation: scrollLeft 90s linear infinite;
+    }
+
+    .gif-stamps-line:hover .gif-stamps-track {
+      animation-play-state: paused;
+    }
+
+    .gif-stamps-track img {
+      height: 60px;
+      margin: 0 15px;
+      border-radius: 8px;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(34, 34, 34, 0.9);
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .footer p {
+      font-family: 'Press Start 2P';
+      font-size: 1rem;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #00ff00; }
+      100% { text-shadow: 0 0 15px #ff00ff; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Splash -->
+  <div class="splash-page" id="splash-page">  
+    <h1 class="splash-title">Welcome to My Website!</h1>
+    <button class="enter-btn" onclick="enterSite()"></button>
+  </div>
+
+  <!-- Main -->
+  <div class="main-content" id="main-content">
+
+    <h1>Welcome to PoliteParrot's Website XD!</h1>
+    <p>My personal project that took Months to make T_T</p>
+
+<!-- GIF with clickable toggle audio -->
+<img src="https://media.tenor.com/jEug4zOUCTEAAAAj/baldi-playtime.gif" 
+     alt="Baldi Playtime GIF" 
+     id="baldiGif" 
+     style="cursor: pointer;">
+
+<audio id="baldiAudio">
+  <source src="file:///C:/Users/kimyh/Downloads/BAL_AllNotebooks_4_Plus_V0.5.2-[AudioTrimmer.com].mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  const audio = document.getElementById('baldiAudio');
+  const gif = document.getElementById('baldiGif');
+
+  gif.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+      audio.currentTime = 0; // reset to start
+    }
+  });
+</script>
+
+    <div class="box-container">
+      <div class="bio-box">
+        <small><i><b><u>HI, welcome to my little creation ;) I took a web creation class and its been SO LONG since i put it to work so i made this, it took a few weeks or even a month i'm guessing but none the less, This website tells a tale about yo boi (PoliteParrot) and what i do. I created this place as my safe spot to do what i want... think of it like a minecraft world or that ready player one book, but WAY more complex then both of those things combined LOLZ! But i may up date frequently (and quick note... MY SPELLING IS CHEEKS T_T) also big credits to my geometry/old web creation teacher, no full names for HIS safety :) and My boy (classmate/buddy) ...who loves pet toasters and played SCP foundation with me :3... and a little chat gpt. My favorite colors are red and blue (wich make purple) and I do VARSITY WRESTLING at my school XDD I run in my school's XC team (cross country) and will soon attend there GOLF team! I love Rec Room and Roblox BOTH and am a True God fearing man of christ (Im a believer) I also watch anime and a do LOTS of other stuff... BUT ANYWAYS ENJOY YOUR STAY ;D (Links and ETC are to your right or if your using your phone, to your bottom)</u></b></i></small>
+		<h2>⠀⠀
+⣤⣶⣶⡿⠿⠿⠿⠿⠿⣶⣶⣶⠄⠀⠀⠐⢶⣶⣶⣿⡿⠿⠿⠿⠿⢿⣷⠦⠀
+⠙⠏⠁⠀⣤⣶⣶⣶⣶⣒⢳⣆⠀⠀⠀⠀⢠⡞⣒⣲⣶⣖⣶⣦⡀⠀⠉⠛⠁
+⠀⠀⠴⢯⣁⣿⣿⣿⣏⣿⡀⠟⠀⠀⠀⠀⠸⠀⣼⣋⣿⣿⣿⣦⣭⠷⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠟⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡄⠀⢰⠏⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⡴⠟⠁⢀⡟⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠸⡗⠶⠶⠶⠶⠶⠖⠚⠛⠛⠋⠉⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀</h2>
+      </div>
+      <div class="extra-box">
+        <a href="https://www.youtube.com/@PoliteParrot8913" target="_blank">
+          <img src="https://www.pngarts.com/files/9/Vector-YouTube-Logo-PNG-Transparent-Image.png" width="150" height="150" style="border-radius:10px; margin:10px;">
+        </a>
+        <a href="https://rec.net/user/PoliteParrot8913" target="_blank">
+          <img src="https://th.bing.com/th/id/R.cf1a2464815d815081f63f933a0f4c49?rik=bYmtJOqWNvqacQ&pid=ImgRaw&r=0" width="100" height="100" style="border-radius:10px; margin:10px;">
+        </a>
+        <a href="https://www.roblox.com/users/7426851336/profile" target="_blank">
+          <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-45DFB31B4D0D2886E506CDC540CFAEAE-Png/150/150/AvatarHeadshot/Webp/noFilter" width="100" height="100" style="border-radius:50%; margin:10px;">
+        </a>
+		<img src="https://www.mabsland.com/Pandas/Censor_Gb.gif">
+		<a href="https://bonkiscoolsite.neocities.org/" target="_blank">
+  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/misc/cutecat.gif" alt="Cute Cat">
+</a>
+
+		<a href="https://melonking.net/melon.html?z=/universe/melozorbs/" target="_blank">
+  <img src="https://melonking.net/universe/melozorbs/images/sniffilwiz.gif" alt="MeloZorbs Sniffilwiz">
+</a>
+
+      </div>
+    </div>
+
+    <!-- Music -->
+    <div class="music-sidebar">
+      <h3>Play this, background music :D</h3>
+      <iframe width="250" height="150"
+        src="https://www.youtube.com/embed/bUs99fyn6G8?autoplay=1&loop=1&controls=1&playlist=bUs99fyn6G8"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="250" height="150"
+        src="https://www.youtube.com/embed/JRr_Smyf7xw?autoplay=0&loop=1&controls=1&playlist=JRr_Smyf7xw"
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+	
+	<h1><b>Gifs and png's i found in <a href="https://adriansblinkiecollection.neocities.org/" 
+   style="text-decoration: underline; color: #00f; font-weight: bold; animation: blink 1s step-start infinite;">
+   This Neocity website
+</a></h1></b>
+
+<style>
+@keyframes blink {
+  30% { opacity: 0; }
+}
+</style>
+
+	
+	<img src="https://adriansblinkiecollection.neocities.org/dividers/bluecoil.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+       filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff);
+     ">
+
+    <!-- Big GIF Line -->
+    <div class="gif-assembly-line">
+      <div class="gif-track" id="gifTrack">
+        <div class="gif-set">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/nescenter.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/n64_com_now.gif">
+          <img src="https://fish.golf/bestvieweddesktop.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/newgrounds.gif">
+          <img src="https://cyber.dabamos.de/88x31/webpeople.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/vlc.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/minecraft.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/gameboy.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/spotify.gif">
+          <img src="https://adriansblinkiecollection.neocities.org/buttons/a60.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/pepsi.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bestviewedwith.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/learn_html.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/netflix-88x31.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bob.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/void.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/misc-homebrew.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/nintendo-wii.png">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/steam.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/pinguonline.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/adobe_asanim1.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/newlambda.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/psbutton.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/webdesign.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/sega_online.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/linux-directory.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/desp-anim.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bonkibutton.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/ngs_88x31_logo.gif">
+          <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/trafficconebutton.png">
+		  <img src="https://www.mabsland.com/Pandas/Censor_Gc.gif">
+		  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/bonkicoolbutton.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a106.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a115.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b16.png">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b5.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e5.gif">
+	  	  <img src="https://adriansblinkiecollection.neocities.org/buttons/e28.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e36.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e23.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/e13.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a110.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a113.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a36.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/a6.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/d18.jpg">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/d9.gif">
+		  <img src="https://adriansblinkiecollection.neocities.org/buttons/b12.gif">
+		  <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/buttons/wow_wow.gif">
+        </div>
+        <div class="gif-set clone"></div>
+      </div>
+    </div>
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/stardivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+    <!-- Stamp Line -->
+    <div class="gif-stamps-line">
+  <div class="gif-stamps-track">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/524f4ab077e0562e889acdefb23e76ec5d8ac0e4.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tumblr_inline_mr1o1yHhYQ1qz4rgp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/tf2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr01.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/reefblower.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/404_by_skystamps-dc2lsbz.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/12b92dcc.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/2.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/club_penguin_stamp_by_theorangewolf.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/life_is_by_kicked_in_teeth-dbtn7fu.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/i_love_you_by_kicked_in_teeth-dbstzed.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/crystal_pepsi_stamp_by_namelessstamps-daeay60.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/d1iu6ng-6c168f8a-6497-4644-aa78-40a76f5ca424.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/squidstamp.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/catstamp.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ballpit.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/smiley.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/8.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr02.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/ptr03.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/sealstamp.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/09losered.png">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/pyro.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/stamps/portal.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e78.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d2.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b20.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b2.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/k18.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/g4.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a48.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a50.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a8.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a9.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a24.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a10.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d9.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/c8.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/c6.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d46.jpg">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d39.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d105.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b60.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b58.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/k19.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e118.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e109.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e99.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e110.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e117.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e45.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e40.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d19.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d20.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e32.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e17.jpg">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f49.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f63.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f59.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f58.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f30.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e3.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/h15.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d90.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/h3.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f33.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f24.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/j5.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/i22.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/h14.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f57.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/j6.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/j1.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e86.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e105.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e68.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/k11.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/g16.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/g10.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/g12.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/k20.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/k27.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f48.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/a7.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f52.jpg">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b16.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b15.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b21.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d26.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d12.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d27.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/c11.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/b77.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d47.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d55.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d48.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/d57.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e5.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/f64.png">
+	<img src="https://adriansblinkiecollection.neocities.org/stamps/e43.gif">
+</div>
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/smileydivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+<!-- New Scroll Line (Below Stamp Line) -->
+<div class="gif-assembly-line">
+      <div class="gif-track" id="gifTrack">
+        <div class="gif-set">
+	<img src="https://adriansblinkiecollection.neocities.org/q5.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/ctrlaltdel.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/I3css.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/0146-kirbydance.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/iambonki.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/eat%20coco.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/garfieald.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/pepermints.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/imisswinter.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tumblr_pc38rqsNC61u4h28eo1_250.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/chese.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/909043q79g7enuyi.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tumblr_9c0fcb142163388e4537e0e85565c023_09041690_250.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/water.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/l3.gif">
+    <img src="https://bonkiscoolsite.neocities.org/images/geocitystuff/blinkies/tomanytabs.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b28.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b2.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/s11.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/y46.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/homestaradvice.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/scoutred.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/country.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/b/sbemaillappy.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/y39.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/z14.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/k15.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/g78.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/k36.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/d23.gif">
+	<img src="https://adriansblinkiecollection.neocities.org/a63.gif">
+  </div>
+        <div class="gif-set clone"></div>
+      </div>
+    </div>
+
+<img src="https://adriansblinkiecollection.neocities.org/dividers/greenarrowdivider.gif" 
+     alt="divider"
+     style="
+       display: block;
+       width: 100%;
+       max-height: 50px;
+       object-fit: cover;
+       margin: 20px 0;
+     ">
+
+<h2><b>
+
+  <div class="footer">
+    <p>Created with 💻 by <strong>V.H. (PoliteParrot8913)</strong> and ChatGPT... a little ;)</p>
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('splash-page').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }
+
+    const faviconImages = [
+      'https://www.pngplay.com/wp-content/uploads/2/Christian-Cross-PNG-Clipart-Background.png',
+      'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-26160329605491C4ACCDB867DD673584-Png/150/150/AvatarHeadshot/Webp/noFilter',
+      'https://img.rec.net/2r5yjgu64jcp8u1uo8qz9hp3p.jpg?width=192&cropSquare=true'
+    ];
+    let currentFaviconIndex = 0;
+    setInterval(() => {
+      currentFaviconIndex = (currentFaviconIndex + 1) % faviconImages.length;
+      document.getElementById('favicon').href = faviconImages[currentFaviconIndex];
+    }, 500);
+
+    // Clone the first GIF set for seamless scroll
+    const gifSet = document.querySelector('.gif-set');
+    document.querySelector('.clone').innerHTML = gifSet.innerHTML;
+  </script>
+</body>
+</html>
